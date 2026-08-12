@@ -91,6 +91,14 @@ class Wordgame:
         print(f"게임 종료:{self.countC}개 맞추었습니다.")
         print(f"총{self.elapsed_time}초 동안 플레이 하였습니다.")
 
+    def scoresave(self):
+        f=open('word_game_socre.csv','a')
+        writer = csv.writer(f)
+        writer.writerow(self.cor_answer)
+        writer.writerow([f"{self.elapsed_time}초 동안 플레이 하였습니다."])
+        writer.writerow([f"{self.countC}개 맞추었습니다."])
+        f.close()
+
 
     def run(self):
         self.wordLoad()
@@ -99,16 +107,20 @@ class Wordgame:
         # - 게임 결과 출력 : scorePrint
         self.scorePrint()
 
+        self.scoresave()
+
+
+
 
 if __name__ == "__main__":
     #게임 객체화
     wg=Wordgame()
     wg.run()
 
-#csv에 입력하기
-f=open('word_game_socre.csv','a')
-writer = csv.writer(f)
-writer.writerow(wg.cor_answer)
-writer.writerow([f"{wg.elapsed_time}초 동안 플레이 하였습니다."])
-writer.writerow([f"{wg.countC}개 맞추었습니다."])
-f.close()
+
+# f=open('word_game_socre.csv','a')
+# writer = csv.writer(f)
+# writer.writerow(wg.cor_answer)
+# writer.writerow([f"{wg.elapsed_time}초 동안 플레이 하였습니다."])
+# writer.writerow([f"{wg.countC}개 맞추었습니다."])
+# f.close()
