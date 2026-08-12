@@ -79,10 +79,6 @@ def gameRun(words):
     return elapsed_time,countC,cor_answer
 
 #최종 합격 여부 판별하기
-
-
-
-
 def scorePrint(elapsed_time,countC):
     if countC < 3:
         print("불합격입니다")
@@ -90,9 +86,7 @@ def scorePrint(elapsed_time,countC):
         print("합격입니다.")
 
     print(f"게임 종료:{countC}개 맞추었습니다.")
-
-
-    #print ("총", elapsed_time,"플레이하였습니다.")
+    print(f"총{elapsed_time}초 동안 플레이 하였습니다.")
 
 if __name__ == "__main__":
     # print(__name__)s
@@ -108,5 +102,5 @@ f=open('word_game_socre.csv','a')
 writer = csv.writer(f)
 writer.writerow(cor_answer)
 writer.writerow([f"{elapsed_time}초 동안 플레이 하였습니다."])
-writer.writerow([f"{countC} 개 맞추었습니다."])
+writer.writerow([f"{countC}개 맞추었습니다."])
 f.close()
